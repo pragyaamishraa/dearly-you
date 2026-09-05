@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-heading: 'Georgia', 'Playfair Display', serif;
+    --font-body: 'Plus Jakarta Sans', sans-serif;
+
+    /* Theme CSS Custom Variables (dynamically overridden at runtime) */
+    --theme-primary: #6D4C41;
+    --theme-secondary: #3E2723;
+    --theme-accent: #E57399;
+    --theme-bg-canvas: #FFF8F9;
+    --theme-card-bg: #FFFFFF;
+    --theme-text-heading: #3E2723;
+    --theme-text-body: #5D4037;
+    --theme-text-muted: #8D6E63;
+    --theme-badge-bg: #FDF1F3;
+    --theme-border: #FCE4EC;
+    --theme-border-subtle: #EED7D1;
+    --theme-glow: rgba(109, 76, 65, 0.18);
+    --theme-gradient: linear-gradient(135deg, #6D4C41 0%, #E57399 50%, #E0C3B5 100%);
+  }
+
+  body {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    background-color: var(--theme-bg-canvas);
+    color: var(--theme-text-body);
+    transition: background-color 0.4s ease, color 0.4s ease;
+  }
+
+  h1, h2, h3, h4, .font-serif-display {
+    font-family: var(--font-heading);
+  }
+}
+
+/* Custom smooth scrollbar adapting to current theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--theme-badge-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary);
+  opacity: 0.35;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-secondary);
+}
+
+/* Soft floating animations */
+@keyframes soft-float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1.5deg);
+  }
+}
+
+@keyframes steam-rise {
+  0% {
+    transform: translateY(0px) scale(0.9);
+    opacity: 0.15;
+  }
+  50% {
+    transform: translateY(-12px) scale(1.05);
+    opacity: 0.35;
+  }
+  100% {
+    transform: translateY(-24px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+@keyframes gentle-pulse {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.03);
+  }
+}
+
+.animate-soft-float {
+  animation: soft-float 6s ease-in-out infinite;
+}
+
+.animate-steam {
+  animation: steam-rise 4s ease-in-out infinite;
+}
+
+.animate-gentle-pulse {
+  animation: gentle-pulse 3s ease-in-out infinite;
+}
+
+/* Dynamic theme classes for instant aesthetic shifts */
+.theme-bg-canvas {
+  background-color: var(--theme-bg-canvas);
+}
+.theme-bg-card {
+  background-color: var(--theme-card-bg);
+}
+.theme-bg-primary {
+  background-color: var(--theme-primary);
+}
+.theme-bg-secondary {
+  background-color: var(--theme-secondary);
+}
+.theme-bg-badge {
+  background-color: var(--theme-badge-bg);
+}
+.theme-text-heading {
+  color: var(--theme-text-heading);
+}
+.theme-text-body {
+  color: var(--theme-text-body);
+}
+.theme-text-muted {
+  color: var(--theme-text-muted);
+}
+.theme-text-primary {
+  color: var(--theme-primary);
+}
+.theme-text-accent {
+  color: var(--theme-accent);
+}
+.theme-border {
+  border-color: var(--theme-border);
+}
+.theme-border-subtle {
+  border-color: var(--theme-border-subtle);
+}
+.theme-border-primary {
+  border-color: var(--theme-primary);
+}

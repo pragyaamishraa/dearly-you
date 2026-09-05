@@ -1,0 +1,8 @@
+{
+  "name": "Dearly - Bloom & Brew",
+  "description": "Dearly: Bloom & Brew - Just a pretty app for a pretty you. Show it your insides, and it'll help you see them a little better.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
