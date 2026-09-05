@@ -1,4 +1,21 @@
-# 🌸 Dearly — Bloom & Brew (Mindful AI Reflection Journal)
+# 🌸 Dearly — Bloom & Brew
+
+Just a pretty app for a pretty you. Show it your insides, and it'll help you see them a little better.
+
+Dearly is a little corner of the internet made for you and your thoughts.
+
+Write about your day. Dump your brain. Talk about something that's been bothering you. Celebrate a tiny win that nobody else would understand.
+
+And when you feel like talking, Dearly's there.
+
+Powered by Gemini, Dearly can read through your reflections, help you make sense of them, summarize what's on your mind, give you something new to think about, or simply have a little conversation with you.
+
+All while keeping your personal journal tucked safely into your own private history.
+
+Because journaling shouldn't feel like homework.
+
+It should feel like sitting down with your favorite drink, opening a fresh page, and finally letting your brain breathe. ☕
+
 
 A mindful reflection journaling web application with baby pink and latte art coffee-brown aesthetics, powered by the **Gemini 3.6 Flash API**, **Firebase Authentication (Google Sign-In)**, and **Cloud Firestore**. Tagline: *"Bloom & Brew"*.
 
