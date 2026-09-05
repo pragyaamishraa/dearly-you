@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Palette, BookOpen, Sparkles, LogOut, PlusCircle } from 'lucide-react';
+import { Palette, BookOpen, Sparkles, LogOut, PlusCircle, Coffee } from 'lucide-react';
 import { ThemeOption, UserProfile } from '../types';
 
 interface NavbarProps {
@@ -10,6 +10,7 @@ interface NavbarProps {
   onOpenThemeModal: () => void;
   onOpenPromptsModal: () => void;
   onOpenHistory: () => void;
+  onOpenWrapped: () => void;
   onNewReflection: () => void;
   onSignOut: () => void;
   isHistoryOpen: boolean;
@@ -22,6 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenThemeModal,
   onOpenPromptsModal,
   onOpenHistory,
+  onOpenWrapped,
   onNewReflection,
   onSignOut,
   isHistoryOpen,
@@ -98,6 +100,33 @@ export const Navbar: React.FC<NavbarProps> = ({
           >
             <Sparkles className="w-3.5 h-3.5" style={{ color: theme.primary }} />
             <span className="hidden sm:inline">Daily Spark</span>
+          </motion.button>
+
+          {/* Dearly Wrapped Button */}
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={onOpenWrapped}
+            title="Dearly Wrapped: Weekly & Monthly Reflections"
+            style={{
+              borderColor: theme.borderColor,
+              color: theme.textHeading,
+              background: `linear-gradient(135deg, ${theme.badgeBg} 0%, #FFFFFF 100%)`,
+            }}
+            className="inline-flex items-center gap-1.5 px-3 sm:px-3.5 py-2 rounded-full text-xs font-medium border cursor-pointer transition-all duration-300 shadow-2xs"
+          >
+            <Coffee className="w-3.5 h-3.5" style={{ color: theme.primary }} />
+            <span className="hidden sm:inline">Wrapped</span>
+            <span
+              style={{
+                backgroundColor: theme.badgeBg,
+                color: theme.primary,
+                borderColor: theme.borderColor,
+              }}
+              className="text-[10px] px-1.5 py-0.2 rounded-full border font-bold"
+            >
+              🌸
+            </span>
           </motion.button>
 
           {/* History Drawer Toggle */}

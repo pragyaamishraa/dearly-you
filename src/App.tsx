@@ -28,6 +28,7 @@ import { ConversationView } from './components/ConversationView';
 import { HistoryDrawer } from './components/HistoryDrawer';
 import { DailyPromptsModal } from './components/DailyPromptsModal';
 import { ThemeSelectorModal } from './components/ThemeSelectorModal';
+import { DearlyWrappedModal } from './components/DearlyWrappedModal';
 import { MoodAestheticEffects, MoodEffectType } from './components/MoodAestheticEffects';
 import { AlertCircle } from 'lucide-react';
 
@@ -77,6 +78,7 @@ export default function App() {
   const [isThemeModalOpen, setIsThemeModalOpen] = useState(false);
   const [isPromptsModalOpen, setIsPromptsModalOpen] = useState(false);
   const [isHistoryOpen, setIsHistoryOpen] = useState(false);
+  const [isWrappedOpen, setIsWrappedOpen] = useState(false);
 
   // Action status
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -476,6 +478,7 @@ export default function App() {
             onOpenThemeModal={() => setIsThemeModalOpen(true)}
             onOpenPromptsModal={() => setIsPromptsModalOpen(true)}
             onOpenHistory={() => setIsHistoryOpen(true)}
+            onOpenWrapped={() => setIsWrappedOpen(true)}
             onNewReflection={() => setActiveInteraction(null)}
             onSignOut={handleSignOut}
             isHistoryOpen={isHistoryOpen}
@@ -560,6 +563,7 @@ export default function App() {
         onDeleteInteraction={handleDeleteInteraction}
         theme={activeTheme}
         activeInteractionId={activeInteraction?.id}
+        onOpenWrapped={() => setIsWrappedOpen(true)}
       />
 
       {/* Daily Prompts Modal */}
@@ -580,6 +584,19 @@ export default function App() {
         onClose={() => setIsThemeModalOpen(false)}
         activeTheme={activeTheme}
         onSelectTheme={handleSelectTheme}
+      />
+
+      {/* Dearly Wrapped Modal */}
+      <DearlyWrappedModal
+        isOpen={isWrappedOpen}
+        onClose={() => setIsWrappedOpen(false)}
+        interactions={interactions}
+        theme={activeTheme}
+        userName={currentUser?.displayName || 'Friend'}
+        onTriggerMoodEffect={handleTriggerMoodByName}
+        onNewReflection={() => {
+          setActiveInteraction(null);
+        }}
       />
     </div>
   );

@@ -69,3 +69,24 @@ export interface DailyPrompt {
   prompt: string;
   mood: string;
 }
+
+export type WrappedPeriod = 'week' | 'month' | 'custom';
+
+export interface DearlyWrappedResult {
+  periodLabel: string;
+  entryCount: number;
+  dateRangeStr: string;
+  cupHeadline: string;
+  overallSummary: string;
+  recurringThemes: string[];
+  joyfulMoments: string[];
+  heavyMoments: string[];
+  subtleWins: string[];
+  patternsObserved: string[];
+  reflectionQuestions: string[];
+  closingNote: string;
+  dominantMood: string;
+  flowerOrCupMetaphor?: string;
+  generatedAt: string;
+  modelUsed?: string;
+}

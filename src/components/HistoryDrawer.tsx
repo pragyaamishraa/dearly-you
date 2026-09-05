@@ -9,6 +9,8 @@ import {
   ChevronRight,
   Filter,
   Download,
+  Coffee,
+  Sparkles,
 } from 'lucide-react';
 import { JournalInteraction, ThemeOption } from '../types';
 import { MOOD_OPTIONS } from '../lib/themes';
@@ -21,6 +23,7 @@ interface HistoryDrawerProps {
   onDeleteInteraction: (id: string) => Promise<void>;
   theme: ThemeOption;
   activeInteractionId?: string;
+  onOpenWrapped?: () => void;
 }
 
 export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
@@ -31,6 +34,7 @@ export const HistoryDrawer: React.FC<HistoryDrawerProps> = ({
   onDeleteInteraction,
   theme,
   activeInteractionId,
+  onOpenWrapped,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMoodFilter, setSelectedMoodFilter] = useState<string>('all');
@@ -167,6 +171,52 @@ ${i.summary ? `### Summary:\n${i.summary}\n` : ''}
                 </button>
               </div>
             </div>
+
+            {/* Dearly Wrapped Callout Banner */}
+            {onOpenWrapped && (
+              <div
+                style={{
+                  background: `linear-gradient(135deg, ${theme.badgeBg} 0%, #FFFFFF 100%)`,
+                  borderBottomColor: theme.subtleBorder,
+                }}
+                className="px-5 py-3 border-b flex items-center justify-between gap-3"
+              >
+                <div className="flex items-center gap-2.5">
+                  <div
+                    style={{ backgroundColor: theme.primary }}
+                    className="w-8 h-8 rounded-xl flex items-center justify-center text-white shadow-2xs shrink-0"
+                  >
+                    <Coffee className="w-4 h-4" />
+                  </div>
+                  <div>
+                    <p
+                      style={{ color: theme.textHeading }}
+                      className="text-xs font-serif font-bold leading-tight"
+                    >
+                      Dearly Wrapped 🌸
+                    </p>
+                    <p style={{ color: theme.textMuted }} className="text-[10px]">
+                      Step back & see your weekly/monthly reflection
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => {
+                    onClose();
+                    onOpenWrapped();
+                  }}
+                  style={{
+                    backgroundColor: theme.primary,
+                    boxShadow: `0 2px 8px -2px ${theme.primary}55`,
+                  }}
+                  className="px-3 py-1.5 rounded-full text-white text-[11px] font-medium shrink-0 cursor-pointer hover:scale-105 transition-transform"
+                >
+                  View ☕
+                </button>
+              </div>
+            )}
 
             {/* Search and Filters */}
             <div

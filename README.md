@@ -208,6 +208,33 @@ Follow these step-by-step test scenarios to verify all processes and user intera
 2. **Verification**: Each effect is rendered with non-blocking pointer events, allowing the user to seamlessly type or interact without disruption.
 3. **Replay Interaction**: Click the active mood badge in the dashboard header (or in the Conversation View) to replay that mood's atmospheric aesthetic at any time.
 
+### Test Case 11: "Dearly Wrapped" Weekly & Monthly Retrospective Reflection
+1. **Action**: Click the "Wrapped 🌸" button in the Navbar or the "Dearly Wrapped 🌸" banner inside the Reflections History Drawer.
+2. **Expected Result**:
+   - The Dearly Wrapped modal opens with a delicate parchment stationery aesthetic matching the active theme palette.
+   - Filter tabs allow selecting **"This Week (7d)"**, **"This Month (30d)"**, or **"Custom Range"** with date pickers.
+   - A live indicator displays the exact number of reflections found in the selected period.
+3. **Graceful Insufficient Data State**:
+   - If the user has fewer than 2 reflections in the selected window, Dearly displays a gentle encouragement message: *"Dearly needs a little more to work with ☕ (at least 2 entries required to spot patterns and weave your reflection letter)"*, accompanied by quick actions to write a new entry or expand the time range.
+4. **Brewing Dearly Wrapped**:
+   - When 2 or more reflections exist, clicking **"Brew Dearly Wrapped ☕"** triggers the backend `/api/wrapped` endpoint.
+   - A serene steeping animation plays with rotating teacup and progress indicators.
+   - The Gemini model analyzes only the authenticated user's actual entries, strictly avoiding hallucinations or diagnostic medical claims.
+5. **Reflection Letter Presentation**:
+   - Renders as a bespoke personal letter:
+     - **"Your [Period] in a Little Cup ☕"** poetic headline and lyrical overview
+     - **"What kept coming up"**: 3-4 recurring themes found in their writings
+     - **"Little things that made you happy"**: Joyful sparks and gratitude mentioned
+     - **"Things that felt heavy"**: Worries or tensions framed with gentle empathy
+     - **"Wins you may have forgotten"**: Moments of quiet resilience and self-kindness
+     - **"Patterns in your thoughts"**: Thought habits or routines they returned to
+     - **"Something to think about"**: 2-3 gentle contemplative reflection questions
+     - **"A little note from Dearly"**: Warm closing sign-off and dominant emotional aura
+6. **Export & Sharing Actions**:
+   - Clicking **"Copy Letter"** copies formatted markdown to clipboard with confirmation feedback.
+   - Clicking **"Download Letter (.md)"** downloads a markdown document with date and period details.
+   - Triggers the matching atmospheric mood aesthetic effect based on the detected dominant mood.
+
 ---
 
 ## 📄 License
